@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV NVIDIA_VISIBLE_DEVICES=all NVIDIA_DRIVER_CAPABILITIES=all
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends locales git tmux vim build-essential wget gedit cmake libopencv-dev
+    apt-get install -y --no-install-recommends locales git tmux vim build-essential wget gedit cmake libopencv-dev curl net-tools
 
 COPY docker/environment.yml /root/environment_linux.yml
 RUN mkdir ~/miniconda3 && cd ~ && \
