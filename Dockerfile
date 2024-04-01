@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV NVIDIA_VISIBLE_DEVICES=all NVIDIA_DRIVER_CAPABILITIES=all
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends locales git tmux gedit vim
+    apt-get install -y --no-install-recommends locales git tmux vim build-essential
 
 RUN mkdir ~/miniconda3 && cd ~ && \
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh && \
@@ -14,9 +14,9 @@ RUN mkdir ~/miniconda3 && cd ~ && \
     miniconda3/bin/conda init bash
 
 WORKDIR /workspace
-COPY . /worksapce/GaussianPro
-RUN /root/miniconda3/bin/conda env create -f /worksapce/GaussianPro/environment.yml
-RUN /root/miniconda3/bin/conda run -n gaussianpro pip3 install pyzmq
+COPY . /workspace/GaussianPro
+RUN cd /workspace/GaussianPro && /root/miniconda3/bin/conda env create -f /workspace/GaussianPro/environment.yml
+RUN /root/miniconda3/bin/conda run -n gaussianpro pip install pyzmq
 
 WORKDIR /workspace
 RUN wget https://drive.google.com/file/d/1DXQRBcUIrnIC33WNq8pVLKZ_W1VwON3k/view?usp=sharing
