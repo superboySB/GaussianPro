@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/pytorch:24.03-py3
+FROM nvidia/cuda:11.6.1-devel-ubuntu20.04
 
 # Please contact with me if you have problems
 LABEL maintainer="Zipeng Dai <daizipeng@bit.edu.cn>"
@@ -16,7 +16,8 @@ RUN mkdir ~/miniconda3 && cd ~ && \
 WORKDIR /workspace
 COPY . /workspace/GaussianPro
 RUN cd /workspace/GaussianPro && /root/miniconda3/bin/conda env create -f /workspace/GaussianPro/environment.yml
-RUN /root/miniconda3/bin/conda run -n gaussianpro pip install pyzmq
+RUN cd /workspace/GaussianPro && /root/miniconda3/bin/conda run -n gaussianpro pip install submodules/diff-gaussian-rasterization && \
+    /root/miniconda3/bin/conda run -n gaussianpro pip install submodules/simple-knn
 
 WORKDIR /workspace
 RUN wget https://drive.google.com/file/d/1DXQRBcUIrnIC33WNq8pVLKZ_W1VwON3k/view?usp=sharing
