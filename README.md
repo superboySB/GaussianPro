@@ -12,17 +12,16 @@
 
 ## 复现经历
 ```sh
+git clone https://github.com/superboySB/GaussianPro.git --recursive
+
 # --progress=plain --no-cache=false
-docker build -f docker/Dockerfile -t nerf_image:0401 .
+docker build -t nerf_image:0401 .
 
 docker run -itd --privileged -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY=$DISPLAY --gpus all --network=host --ipc host --name=gspro nerf_image:0401 /bin/bash
 
 docker exec -it gspro /bin/bash
 
-cd ./submodules/Propagation
-
-cmake . && make
-
+cd ./submodules/Propagation && cmake . && make
 ```
 
 
