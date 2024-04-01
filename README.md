@@ -10,6 +10,22 @@
 <img width="800" alt="image" src="figs/comparison.gif">
 </div>
 
+## 复现经历
+```sh
+# --progress=plain --no-cache=false
+docker build -f docker/Dockerfile -t nerf_image:0401 .
+
+docker run -itd --privileged -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY=$DISPLAY --gpus all --network=host --ipc host --name=gspro nerf_image:0401 /bin/bash
+
+docker exec -it gspro /bin/bash
+
+cd ./submodules/Propagation
+
+cmake . && make
+
+```
+
+
 ## 📖 Abstract
 
 The advent of 3D Gaussian Splatting (3DGS) has recently brought about a revolution in the field of neural rendering, facilitating high-quality renderings at real-time speed. However, 3DGS heavily depends on the initialized point cloud produced by Structure-from-Motion (SfM) techniques.
