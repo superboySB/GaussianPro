@@ -12,18 +12,40 @@
 
 ## 复现经历
 ```sh
-git clone https://github.com/superboySB/GaussianPro.git --recursive
-
 # --progress=plain --no-cache=false
-docker build -t nerf_image:0401 .
+docker build -f docker/Dockerfile -t nerf_image:0401 .
 
 docker run -itd --privileged -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY=$DISPLAY --gpus all --network=host --ipc host --name=gspro nerf_image:0401 /bin/bash
 
 docker exec -it gspro /bin/bash
 
-cd ./submodules/Propagation && cmake . && make
-```
+git clone https://github.com/superboySB/GaussianPro.git --recursive
 
+cd GaussianPro && conda activate gaussianpro
+
+pip install submodules/diff-gaussian-rasterization
+
+pip install submodules/simple-knn
+
+cd ./submodules/Propagation && cmake . && make -j16
+```
+官方数据集
+```sh
+# Waymo scene: Segment-102751
+RUN wget https://drive.google.com/file/d/1DXQRBcUIrnIC33WNq8pVLKZ_W1VwON3k/view?usp=sharing
+
+#youtube01: Park.
+wget https://drive.google.com/file/d/1iHYTnI76Zx9VTKbMu1zUE7gVKP4UpBan/view?usp=sharing
+
+#youtube02: Church
+wget https://drive.google.com/file/d/1i2ReAJYkeLHBBbs_8Zn560Tke2F8yR1X/view?usp=sharing
+
+#youtube03: The forbidden city.
+wget https://drive.google.com/file/d/1PZ_917Oq0Y45_5dJ504RxRmpUnewYmyn/view?usp=sharing
+
+#youtube04: Eiffel tower.
+wget https://drive.google.com/file/d/1JoYyfAu3RNnj12C2gPvfljHLUKlUsSr1/view?usp=sharing
+```
 
 ## 📖 Abstract
 
