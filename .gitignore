@@ -65,4 +65,9 @@ videos
 __pycache__
 
 # ours
+youtube01/
+gugong/
+segment-102751/
+cache/
 *.tar
+*.zip

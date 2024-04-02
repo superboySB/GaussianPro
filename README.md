@@ -74,12 +74,12 @@ Experiments on both large-scale and small-scale scenes validate the effectivenes
 Ubuntu 20.04.1 LTS, GeForce 3090, CUDA 11.3 (tested) / 11.7 (tested), C++17
 
 #### Clone the repo.
-```
+```sh
 git clone https://github.com/kcheng1021/GaussianPro.git --recursive
 ```
 
 #### Environment setup 
-```
+```sh
 conda env create --file environment.yml
 
 cd ./submodules/Propagation
@@ -90,13 +90,13 @@ make
 ```
 
 #### Download the demo Waymo scene: Segment-102751
-```
+```sh
 wget https://drive.google.com/file/d/1DXQRBcUIrnIC33WNq8pVLKZ_W1VwON3k/view?usp=sharing
 ```
 
 #### Besides the public datasets, we also test GaussianPro from random selected Youtube videos and find consistent improvement. The processed data is provided below. 
 
-```
+```sh
 #youtube01: Park.
 wget https://drive.google.com/file/d/1iHYTnI76Zx9VTKbMu1zUE7gVKP4UpBan/view?usp=sharing
 
@@ -114,7 +114,7 @@ wget https://drive.google.com/file/d/1JoYyfAu3RNnj12C2gPvfljHLUKlUsSr1/view?usp=
 ![image](https://github.com/kcheng1021/GaussianPro/blob/main/figs/output2.gif)
 
 #### Run the codes 
-```
+```sh
 # Run the 3DGS, we modify the defaulting parameters in 3DGS to better learn large scenes. The description of parameters in GaussianPro will come out later.
 
 # To run the Waymo scenes (3DGS and GaussianPro)

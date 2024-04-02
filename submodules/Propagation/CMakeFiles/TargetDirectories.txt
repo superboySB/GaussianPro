@@ -1,0 +1,3 @@
+/workspace/GaussianPro/submodules/Propagation/CMakeFiles/rebuild_cache.dir
+/workspace/GaussianPro/submodules/Propagation/CMakeFiles/edit_cache.dir
+/workspace/GaussianPro/submodules/Propagation/CMakeFiles/Propagation.dir
